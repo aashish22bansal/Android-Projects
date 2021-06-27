@@ -30,11 +30,21 @@
         android:text="Surja Ram Market, Malout"
         android:textSize="24dp" />
 
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/main_image"
+        android:text="Contact: +91 94171-60131
+                    \nName: Pukesh Bansal
+                    \nHours of Operation: Everyday 09:00 AM to 09:00 PM"/>
+
     <RatingBar
         android:id="@+id/ratingBar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_image"
+        android:layout_below="@+id/details"
         android:numStars="5"
         android:rating="4.5"/>
 
@@ -43,15 +53,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/ratingBar1"
-        android:layout_below="@id/main_image"
+        android:layout_below="@id/details"
         android:layout_alignBottom="@id/ratingBar1"
         android:text="4.5 out of 5" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/description1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_below="@id/ratingBar1"
         android:text="Best Shop"/>
+
+    <TextView
+        android:id="@+id/description2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/description1"
+        android:text="Trustful Place"/>
+
+    <TextView
+        android:id="@+id/description3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/description2"
+        android:text="Genuine Medicines"/>
 </RelativeLayout>
