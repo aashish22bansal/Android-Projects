@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/quantity_text"
-            android:layout_paddingLeft="8dp"
-            android:layout_paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:text="0"
             android:textColor="@color/black" />
 
