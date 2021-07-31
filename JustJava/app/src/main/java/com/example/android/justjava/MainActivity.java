@@ -12,6 +12,9 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity
 {
+    // Initialising the value of quatity and priceOfCoffee
+    int quantity = 0, priceOfCoffee=5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,9 +26,28 @@ public class MainActivity extends AppCompatActivity
     * This method is called when the order button is clicked.
     */
     public void submitOrder(View view){
-        int quantity = 2, priceOfCoffee=5;
         display(quantity);
         displayPrice(quantity * priceOfCoffee);
+    }
+
+    /**
+     * This is the increment method used to increase the value of quantity by 1.
+     */
+    public void increment(View view){
+        quantity = quantity + 1;
+        display(quantity);
+    }
+
+    /**
+     * This is the decrement method used to reduce the value of quantity by 1.
+     */
+    public void decrement(View view){
+        quantity = quantity - 1;
+        if(quantity<=0)
+        {
+            quantity = 0;
+        }
+        display(quantity);
     }
 
     /**
