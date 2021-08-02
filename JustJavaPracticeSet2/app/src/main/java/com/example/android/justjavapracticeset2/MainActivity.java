@@ -12,12 +12,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        TextView textView = new TextView(this);
-        textView.setText("Now!");
-        setContentView(textView);
-        
-//        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         // PASTE CODE YOU WANT TO TEST HERE
         int raspberryPrice = 5;
         display1("1 box: $" + raspberryPrice);
