@@ -78,7 +78,7 @@
         android:layout_below="@+id/quantity_text_view"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="submitOrder"
+        android:onClick="submidtOrder"
         android:text="Order"
         android:textAllCaps="true" />
 

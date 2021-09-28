@@ -28,15 +28,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d45b883-6369-4cba-87a8-f61805d5e141" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../CurrencyConverter/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CurrencyConverter/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CurrencyConverter/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CurrencyConverter/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CurrencyConverter/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CurrencyConverter/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JustJavaPracticeSet2/app/src/main/java/com/example/android/justjavapracticeset2/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JustJavaPracticeSet2/app/src/main/java/com/example/android/justjavapracticeset2/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/justjava/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/justjava/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\aashi\.android\avd\Pixel_3a_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\aashi\.android\avd\Pixel_3_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CurrencyConverter" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
