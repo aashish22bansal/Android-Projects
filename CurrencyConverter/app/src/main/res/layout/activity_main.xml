@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:inputType="numberDecimal"
             android:id="@+id/txtAmount"/>
     </LinearLayout>
 
@@ -74,5 +75,25 @@
             android:layout_height="wrap_content"
             android:text="Convert"
             android:background="@color/design_default_color_primary"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Converted Amount: "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="40"
+            android:textSize="40dp"
+            android:id="@+id/displayAmount"/>
     </LinearLayout>
 </LinearLayout>
