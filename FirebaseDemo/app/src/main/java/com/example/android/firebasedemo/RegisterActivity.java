@@ -3,6 +3,7 @@ package com.example.android.firebasedemo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -55,6 +56,11 @@ public class RegisterActivity extends AppCompatActivity {
          * Step 12: Checking if the number of characters match the requirement.
          * Step 13: Create a Method to Register the User and send the email & password.
          * Step 14: Create a Firebase Authentication Variable.
+         * Step 15: Initialize the Firebase Authentication Variable.
+         * Step 16: Registering the user in the registerUser() Method.
+         * Step 17: Notifying the user for the completion of the registration.
+         * Step 18: Checking if the task was successful or not.
+         * Step 19: Whenever a user is logged-in, then we want the user to be redirected to the MainActivity.java
          */
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +93,11 @@ public class RegisterActivity extends AppCompatActivity {
                 // Step 18: Checking if the task was successful or not.
                 if(task.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                    /** Step 19: Whenever a user is logged-in, then we want the user to be redirected to the MainActivity.java
+                     * This can be done by creating a new intent.
+                     */
+                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                    finish();
                 }
                 else{
                     Toast.makeText(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
