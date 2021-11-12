@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
          * Step 27: User the Firebase "auth" variable to sign-in to the application
          * Step 28: Add a success Listener which will veify whether we have logged-in or not.
          * Step 29: Go to MainActivity by starting the intent for the MainActivity
+         *
+         * Step 30: Making the Logout Button.
          */
         auth.signInWithEmailAndPassword(txt_email, txt_password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
