@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         /**
          * Step 37: Taking input from the User and adding it to the Realtime Database. For this, we will add some buttons to the XML File and then we will add the componets in the java file
          * Step 38: Link the Data Members to the Instances.
@@ -156,24 +157,72 @@ public class MainActivity extends AppCompatActivity {
          *          this, we will change the Branch name in the SetOnClickListener() in step 42. We will change "MobileApplicationDevelopment"
          *          to "Languages"
          */
+//        ArrayList<String> list = new ArrayList<>(); // step 46
+//        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list); // step 47
+//        listView.setAdapter(adapter); // step 48
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Languages"); //step 49
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                list.clear(); // step 51
+//                for(DataSnapshot dataSnapshot:snapshot.getChildren()){ // step 52
+//                    list.add(dataSnapshot.getValue().toString());
+//                }
+//                adapter.notifyDataSetChanged(); // step 53
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+        /**
+         * Now, we will try to retrieve a set of information from the database. For this, we will need to add some data to the database
+         * and we can do that by using the following code:
+         *         HashMap<String, Object> branch1 = new HashMap<>();
+         *         HashMap<String, Object> branch2 = new HashMap<>();
+         *         HashMap<String, Object> branch3 = new HashMap<>();
+         *         branch1.put("Email","aashish.bansal@gmail.com");
+         *         branch1.put("Name","Aashish Bansal");
+         *         branch2.put("Email","ashish.goyal@gmail.com");
+         *         branch2.put("Name","Ashish Goyal");
+         *         branch3.put("Email","pranav.chugh@gmail.com");
+         *         branch3.put("Name","Pranav Chugh");
+         *         FirebaseDatabase.getInstance().getReference().child("Information").child("branch1").updateChildren(branch1);
+         *         FirebaseDatabase.getInstance().getReference().child("Information").child("branch2").updateChildren(branch2);
+         *         FirebaseDatabase.getInstance().getReference().child("Information").child("branch3").updateChildren(branch3);
+         * In this, we will retrieve the complete branch and then return it.
+         * METHOD 1: CREATING A MODEL CLASS.
+         *      Step 55: Create a new Java class. (Information.java created and go to that file)
+         *      Step 56: Create the data members.
+         *      Step 57: Create the constructor.
+         *      Step 58: Create the getters and setters.
+         *      Step 59: Create a reference to the "Information" branch and not to the "Languages" branch.
+         *      Step 60: Retrieve an Object of "Information"
+         *      Step 61: Fetch the data from the object of type "information"
+         */
         ArrayList<String> list = new ArrayList<>(); // step 46
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list); // step 47
+        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_item, list); // step 47
         listView.setAdapter(adapter); // step 48
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Languages"); //step 49
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Information"); //step 59
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear(); // step 51
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){ // step 52
-                    list.add(dataSnapshot.getValue().toString());
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Information information = dataSnapshot.getValue(Information.class); // step 60
+                    String txt = information.getName() + " : " + information.getEmail(); // step 61
+                    list.add(txt);
                 }
                 adapter.notifyDataSetChanged(); // step 53
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(MainActivity.this, "Error from Database", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }
