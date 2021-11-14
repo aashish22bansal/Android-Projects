@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Script;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,15 +14,22 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -157,25 +165,28 @@ public class MainActivity extends AppCompatActivity {
          *          this, we will change the Branch name in the SetOnClickListener() in step 42. We will change "MobileApplicationDevelopment"
          *          to "Languages"
          */
-//        ArrayList<String> list = new ArrayList<>(); // step 46
-//        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list); // step 47
-//        listView.setAdapter(adapter); // step 48
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Languages"); //step 49
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                list.clear(); // step 51
-//                for(DataSnapshot dataSnapshot:snapshot.getChildren()){ // step 52
-//                    list.add(dataSnapshot.getValue().toString());
-//                }
-//                adapter.notifyDataSetChanged(); // step 53
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        /*
+        ArrayList<String> list = new ArrayList<>(); // step 46
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list); // step 47
+        listView.setAdapter(adapter); // step 48
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Languages"); //step 49
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear(); // step 51
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){ // step 52
+                    list.add(dataSnapshot.getValue().toString());
+                }
+                adapter.notifyDataSetChanged(); // step 53
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+         */
 
         /**
          * Now, we will try to retrieve a set of information from the database. For this, we will need to add some data to the database
@@ -202,9 +213,11 @@ public class MainActivity extends AppCompatActivity {
          *      Step 60: Retrieve an Object of "Information"
          *      Step 61: Fetch the data from the object of type "information"
          */
-        ArrayList<String> list = new ArrayList<>(); // step 46
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_item, list); // step 47
+        /*
+        final ArrayList<String> list = new ArrayList<>(); // step 46
+        final ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_item, list); // step 47
         listView.setAdapter(adapter); // step 48
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Information"); //step 59
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -221,6 +234,137 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(MainActivity.this, "Error from Database", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+         */
+
+        /**
+         * Working with Cloud Firestore.
+         * Step 62: Create an instance of Cloud Firestore
+         * Step 63: Create a Map.
+         * Step 64: Add data to the HashMap.
+         * Step 65: Add the HashMap to the Firestore.
+         */
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        /*
+        // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN ADDED.
+        Map<String, Object> city = new HashMap<>();
+        city.put("Name","Malout");
+        city.put("State","Punjab");
+        city.put("Country","India");
+        firebaseFirestore.collection("cities").document("JSR").set(city).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "City Added!",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "City Not Added!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+         */
+
+        /**
+         * Merging some data to the Cloud Firestore document.
+         * Step 66: Create a HashMap.
+         * Step 67: Add data to the HashMap.
+         * Step 68: Merge data to Firestore
+         */
+        /*
+        // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN MERGED.
+        Map<String, Object> data = new HashMap<>();
+        data.put("Capital", false);
+        firebaseFirestore.collection("cities").document("JSR").set(data, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Merge Successful!",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Merge Not Successful!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+         */
+
+        /**
+         * ADDING DATA TO THE DATABASE WITH A UNIQUE ID.
+         * Step 69: Create a HashMap
+         * Step 70: Add data to the HashMap
+         */
+        /*
+        // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN ADDED.
+        Map<String, Object> data = new HashMap<>();
+        data.put("Name", "Tokyo");
+        data.put("Capital", "Japan");
+        firebaseFirestore.collection("cities").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Values added Successfully!",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Values not added!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+         */
+
+        /**
+         * UPDATING OUT EXISTING DATA.
+         * Step 71: Create a DocumentReference Variable.
+         * Step 72: Update the values
+         * Step 73: Check if the values have been updated.
+         */
+        /*
+        // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN UPDATED.
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("cities").document("JSR");
+        documentReference.update("capital", true).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Value updated Successfully!",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Value not updated!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+         */
+
+        /**
+         * RETRIEVEING DATA FROM THE CLOUD FIRESTORE DATABASE.
+         * Now, we will try to retrieve a set of information from the database. For this, we will need to add some data to the database.
+         * Step 74: Download the values stored in the database which can be done with the DocumentReference Variable.
+         * Step 75: Check if the document has been accessed.
+         * Step 76: Obtain the values stored in the document. This can be done with the help of the DocumentSnapshot.
+         * Step 77: Check if the document exists.
+         * Step 78: Store the result in Logs if the document exists.
+         */
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("cities").document("DC"); // step 74
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){ // step 75
+                    DocumentSnapshot documentSnapshot = task.getResult(); // step 76
+                    if(documentSnapshot.exists()){ // step 77
+                        Log.d("Document", String.valueOf(documentSnapshot.getData())); // step 78
+                        Toast.makeText(MainActivity.this, "Document exists and has been logged!",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Log.d("Document", "No data"); // step 78
+                        Toast.makeText(MainActivity.this, "Document does not exist but stored in logs!",Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(MainActivity.this, "Values retrieved Successfully!",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Values not retrieved!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
