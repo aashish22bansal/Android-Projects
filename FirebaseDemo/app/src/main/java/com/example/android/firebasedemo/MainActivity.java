@@ -25,6 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
@@ -116,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
          *         map.put("N4","React Native");
          *         FirebaseDatabase.getInstance().getReference().child("Languages").updateChildren(map);
          */
-
-
 
 
         /**
@@ -346,6 +346,8 @@ public class MainActivity extends AppCompatActivity {
          * Step 77: Check if the document exists.
          * Step 78: Store the result in Logs if the document exists.
          */
+        /*
+        // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN RETRIEVED.
         DocumentReference documentReference = FirebaseFirestore.getInstance().collection("cities").document("DC"); // step 74
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -353,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
                 if(task.isSuccessful()){ // step 75
                     DocumentSnapshot documentSnapshot = task.getResult(); // step 76
                     if(documentSnapshot.exists()){ // step 77
-                        Log.d("Document", String.valueOf(documentSnapshot.getData())); // step 78
+                        Log.d("Document", documentSnapshot.getData().toString()); // step 78
                         Toast.makeText(MainActivity.this, "Document exists and has been logged!",Toast.LENGTH_SHORT).show();
                     }
                     else{
@@ -367,6 +369,38 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+         */
+
+        /**
+         * DOWNLOADING DOCUMENTS BASED ON SOME CONDITION
+         * Step 79: Download the values stored in the database which can be done with the Firestore whereEqualTo() method.
+         * Step 80: Check if the task has been successful.
+         * Step 81: Obtain the values stored in the document using the Enhanced for loop.
+         * Step 82: Log the details if successfully captured.
+         */
+        /*
+        // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN RETRIEVED.
+        FirebaseFirestore.getInstance().collection("cities").whereEqualTo("capital", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){ // step 75
+                    for(QueryDocumentSnapshot queryDocumentSnapshot:task.getResult()){
+                        Log.d("Document", queryDocumentSnapshot.getId() + "=>" + queryDocumentSnapshot.getData());
+                    }
+                    Toast.makeText(MainActivity.this, "Value retrieved Successfully!",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Value not retrieved!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+         */
+
+        /**
+         * ADDING A REAL-TIME LISTENER FOR THE DATABASE
+         */
 
     }
 }
