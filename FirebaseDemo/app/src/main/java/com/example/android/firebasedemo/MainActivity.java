@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
          * Step 36: Adding data to the database by creating an instance of the Firebase database. This will add a
          *          branch named aashish22bansal in the database which will have another branch named Android which
          *          will have the value set as "Aashish Bansal". This can be achieved through the following statement:
+         *
          *          FirebaseDatabase.getInstance().getReference().child("aashish22bansal").child("Android").setValue("Aashish Bansal");
          *
          *          Now, for our branch to have more than one child, we can use a HashMap. we can create a HashMap
@@ -247,8 +248,8 @@ public class MainActivity extends AppCompatActivity {
          * Step 65: Add the HashMap to the Firestore.
          */
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        /*
         // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN ADDED.
+        /*
         Map<String, Object> city = new HashMap<>();
         city.put("Name","Malout");
         city.put("State","Punjab");
@@ -264,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
          */
 
         /**
@@ -276,7 +278,8 @@ public class MainActivity extends AppCompatActivity {
         // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN MERGED.
         Map<String, Object> data = new HashMap<>();
         data.put("Capital", false);
-        firebaseFirestore.collection("cities").document("JSR").set(data, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseFirestore.collection("cities").document("JSR").set(data, SetOptions.merge()).
+                addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -379,9 +382,9 @@ public class MainActivity extends AppCompatActivity {
          * Step 81: Obtain the values stored in the document using the Enhanced for loop.
          * Step 82: Log the details if successfully captured.
          */
-        /*
         // THIS NEEDS TO BE RUN ONCE BECAUSE THE DATA HAS ALREADY BEEN RETRIEVED.
-        FirebaseFirestore.getInstance().collection("cities").whereEqualTo("capital", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        FirebaseFirestore.getInstance().collection("cities").whereEqualTo("capital", true).get().
+                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){ // step 75
@@ -395,8 +398,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-         */
 
         /**
          * ADDING A REAL-TIME LISTENER FOR THE DATABASE

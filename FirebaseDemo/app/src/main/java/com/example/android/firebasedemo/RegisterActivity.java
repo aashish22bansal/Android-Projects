@@ -87,7 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerUser(String txt_email, String txt_password) {
         // Step 16: Registering the user
         // Step 17: Notifying the user for the completion of the registration.
-        auth.createUserWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener(RegisterActivity.this,
+                                                                                            new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 // Step 18: Checking if the task was successful or not.
